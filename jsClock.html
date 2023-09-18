@@ -1,0 +1,140 @@
+<!doctype html>
+<!-- YOU GET THE STARTING TEMPLATE FROM THE FOLLOWING WEBSITE(GETBOOTSTRAP) AND HERE IS THE LINK
+
+https://getbootstrap.com/docs/4.4/getting-started/introduction/#starter-template-->
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+</head>
+
+<body>
+
+    <!-- This is the navigation bar from bootstrap -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" width=" 100%">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent" width="100%">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active mx-5" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mx-5" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item mx-5" href="#">Action</a></li>
+                            <li><a class="dropdown-item " href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-5">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+
+                    <!-- <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
+                </ul>
+                <form class=" mx-5 d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+    </div>
+
+    <!-- NOW WE WILL BE USING JUMBOTRON IN Bootstrap -->
+    <div class="container my-5">
+        <div class="jumbotron mx-sm-4">
+            <h1 class="display-4">Welcome to Advanced Clock!</h1>
+            <p style="font-size: 30px;">
+                <b>
+                    The current time is: <span id="time"></span>
+                </b>
+            </p>
+            <p class="lead">You want to see time. We can show you </p>
+            <hr class="my-4">
+            <p>You can click on brow times to see different time zones</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Browse Times</a>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        let a, hours, minutes, seconds, date, newformat, time;
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+        setInterval(() => {
+
+            a = new Date();
+
+            hours = a.getHours();
+            minutes = a.getMinutes();
+            seconds = a.getSeconds();
+
+
+
+            date = a.toLocaleDateString(undefined, options);
+
+            // Check whether AM or PM
+            newformat = hours >= 12 ? 'PM' : 'AM';
+
+            // Find current hour in AM-PM Format
+            hours = hours % 12;
+
+            // To display "0" as "12" for minutes
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            seconds= seconds <10 ? '0' + seconds: seconds; 
+
+            time = hours + ":" + minutes + ":" + seconds + " " + newformat
+
+            document.getElementById('time').innerHTML = time + " <br>on " + date;
+
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
